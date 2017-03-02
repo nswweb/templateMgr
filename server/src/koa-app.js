@@ -4,7 +4,8 @@ require('babel-core/register');
 const Koa = require('Koa');
 const app = new Koa();
 
-import './template.controller';
+import './demo/template.controller';
+import './demo/user.controller';
 
 
 

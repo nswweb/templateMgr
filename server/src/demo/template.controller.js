@@ -1,23 +1,23 @@
-import {routePrefix, route, koaRouter} from './router';
+import {routePrefix, route, koaRouter} from '../router';
 koaRouter.add(TemplateConteroller);
 
 @routePrefix('template')
 export class TemplateConteroller{
-    @route('load/:id')
+    @route('load/:id') //http://localhost:3000/template/load/(id)
     async getTemplate({id}){
         id = await timeout(id);
-        this.body = 'ttttttt' + id;
+        return id;
     }
 
-    @route('loadUsers/:filter')
+    @route('loadUsers/:filter') //http://localhost:3000/template/loadUsers/(filter)
     async users({filter}){
         let vv = await timeout([{id:"01",name:'bowen'},{id:'02',name:'owen'}]);
-        this.body = vv;
+        return vv;
     }
 
-    @route('loadTpls','get', false)
+    @route('loadTpls','get', false) //http://localhost:3000/template/loadTpls
     getTemplates(){
-        this.body = 'abkjl;kjd;slfj';
+        return `<div>helel</div>`;
     }
 }
 
@@ -25,7 +25,7 @@ function timeout(testVal) {
   return new Promise((resolve) => {
     setTimeout(function(){
         resolve(testVal);
-    }, 2000);
+    }, 10);
   });
 }
 

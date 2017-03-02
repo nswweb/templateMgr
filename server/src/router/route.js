@@ -31,18 +31,35 @@ import {koaRouter} from './koa-router';
 export function route(route, method, isAsync = true){
    return function (target, key, descriptor){         
        setTimeout(function(){//TODO：默认类的实例化会在函数实例化之后，所有这里会加这个东东
-            var prefix = target.router.prefix;           
-            var fixed_route = prefix? `/${prefix}/${route}`:`/${route}`;
+            var prefix = target.router && target.router.prefix,
+                fixed_route;
+
+            if(route){
+                fixed_route = prefix? `/${prefix}/${route}`:`/${route}`;            
+            }else{
+                fixed_route = `/${prefix}`; 
+            }
+
+            console.log(fixed_route); //打印当前的路由表
 
             method = method || getDefaultHttpMethod(key, route) || 'get';
 
-            koaRouter[method](fixed_route, function*(next){
-                if(isAsync){
-                    yield descriptor.value.call(this, this.params);
-                }else{
-                    descriptor.value.call(this, this.params);
+            koaRouter[method](fixed_route, async function(next){
+                var result;
+                try {
+                     if(isAsync){
+                        result = await descriptor.value.call(this, this.params);
+                     }else{
+                        result = descriptor.value.call(this, this.params);
+                     }
+                } catch (error) {
+                    //服务器错误自动打出来，这里没有向前端扔出错误，后面会添加当前的环境是debug还是production进一步进行优化。
+                    console.error(error);
+                    this.status = 500;
                 }
-                yield next;
+               
+                this.body = result;
+                await next;
             });
             return descriptor;
        })
