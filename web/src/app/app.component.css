@@ -1,7 +1,31 @@
-main {
-  padding: 1em;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  margin-top: 50px;
+
+
+.header{
+  height: 5vh;
   display: block;
+  background-color: yellow;
+}
+
+.main{
+  height: 90vh;
+  display: block;
+  background-color: peru;
+}
+
+.footer{
+  height: 3vh;
+  display: block;
+  text-align: center;
+}
+
+.preview-container{
+  width:980px;
+  height: 500px;
+  float: right;
+}
+
+.code-container{
+  float: left;
+  height: 500px;
+  width: 600px;
 }

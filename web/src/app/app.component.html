@@ -1,4 +1,16 @@
 <main>
-  <h1>Bowen's ng2 seed program</h1>
-  <img src="../../public/images/angular.png">
+  <section class="header">
+
+  </section>
+  <section class="main">
+        <section class="preview-container">
+          <preview [template]="html"></preview>
+        </section>
+        <section class="code-container">
+          <edit [editValue]="html" (valueChanged)="valueChanged($event)"></edit>
+        </section>
+  </section>
+  <section class="footer">
+      牛前端作品
+  </section>
 </main>
