@@ -7,7 +7,6 @@ import {Component, Input} from '@angular/core';
 })
 export class previewComponent{
     _template:string = '';
-   // @Input() template:string;
     @Input()
     set template(value){        
         this._template = value;

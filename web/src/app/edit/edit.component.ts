@@ -28,7 +28,6 @@ export class EditComponent{
         this.aceOption = {
             readonly: false,
             theme: 'twilight',
-            height:700,
             onLoaded: (editor:any) => {
                 editor.$blockScrolling = Infinity
                 editor.setOptions({

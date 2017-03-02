@@ -6,4 +6,11 @@
     text-align: center;
     background-color: white;
     width: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.preview-com iframe{
+    display: inline-block;
+    border:none;
 }

@@ -1,0 +1,59 @@
+
+
+.header{
+  height: 5vh;
+  display: block;
+  background-color: yellow;
+}
+
+.main{
+  display: block;
+  background-color: peru;
+  clear:both;
+}
+
+.footer{
+  clear: both;
+  height: 3vh;
+  display: block;
+  text-align: center;
+}
+
+.pc-view preview-com{
+  width: 100%;
+}
+
+.phone-view preview-com{
+  width: 450px;
+}
+
+@media screen and (max-width: 800px) {
+  .main{
+    height: 186vh;
+  }
+  .preview-container{
+    padding: 5px;
+  }
+
+  .code-container{
+    padding: 5px;
+  }
+}
+@media screen and (min-width: 801px) {
+  .main{
+    height: 714px;
+  }
+  .preview-container{
+    width: 60%;  
+    float: right;
+    padding: 5px;
+  }
+
+  .code-container{
+    float: left;
+    width: 39%;
+    padding: 5px;
+    padding-right: 0;
+  }
+}
+

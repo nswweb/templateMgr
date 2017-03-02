@@ -1,9 +1,13 @@
 <main>
   <section class="header">
-
+    <toolbar
+      (select) = "selectTemplate()"
+      (usePc) = "showPcPreview()"
+      (usePhone) = "showPhonePreview()"
+    ></toolbar>
   </section>
   <section class="main">
-        <section class="preview-container">
+        <section class="preview-container" [ngClass]="previewStyle">
           <preview [template]="html"></preview>
         </section>
         <section class="code-container">
