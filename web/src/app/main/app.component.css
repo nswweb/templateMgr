@@ -19,11 +19,16 @@
   text-align: center;
 }
 
-.pc-view preview-com{
+.pc-view,.phone-view{
+  text-align: center;
+}
+.pc-view .preview-com{
+  display: inline-block;
   width: 100%;
 }
 
-.phone-view preview-com{
+.phone-view .preview-com{
+  display: inline-block;
   width: 450px;
 }
 

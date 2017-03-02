@@ -1,8 +1,9 @@
 <div class="toolbar">
     <button class="btn btn-default" type="submit" (click)="save.emit()" >保存</button>
+    <button class="btn btn-default" type="submit" (click)="format.emit()">格式化代码</button>
+
     <button class="btn btn-default" type="submit" (click)="select.emit()">选择模板</button>
     <button class="btn btn-default" type="submit" (click)="upload.emit()">上传模板</button>
-
     <button class="btn btn-info pull-right" type="submit" (click)="usePhone.emit()">手机</button>
     <button class="btn btn-info pull-right" type="submit" (click)="usePc.emit()">PC</button>
 </div>
