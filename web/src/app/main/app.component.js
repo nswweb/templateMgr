@@ -28,6 +28,8 @@ var AppComponent = (function () {
     AppComponent.prototype.showPhonePreview = function () {
         this.previewStyle = PHONE_VIEW_CLASS;
     };
+    AppComponent.prototype.formatCode = function () {
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',

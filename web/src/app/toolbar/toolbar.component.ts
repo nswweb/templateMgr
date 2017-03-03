@@ -11,6 +11,7 @@ export class ToolbarComponent{
     @Output() upload = new EventEmitter();
     @Output() usePhone = new EventEmitter();
     @Output() usePc = new EventEmitter();
+    @Output() format = new EventEmitter();
 
     constructor(){
     }

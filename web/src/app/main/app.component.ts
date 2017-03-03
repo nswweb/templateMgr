@@ -23,12 +23,14 @@ export class AppComponent {
     saveModify(){
 
     }
-
     showPcPreview(){
       this.previewStyle = PC_VIEW_CLASS;
     }
 
     showPhonePreview(){
       this.previewStyle = PHONE_VIEW_CLASS;
+    }
+    formatCode(){
+      
     }
 }

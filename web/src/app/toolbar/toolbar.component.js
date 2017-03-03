@@ -13,6 +13,7 @@ var ToolbarComponent = (function () {
         this.upload = new core_1.EventEmitter();
         this.usePhone = new core_1.EventEmitter();
         this.usePc = new core_1.EventEmitter();
+        this.format = new core_1.EventEmitter();
     }
     __decorate([
         core_1.Output()
@@ -29,6 +30,9 @@ var ToolbarComponent = (function () {
     __decorate([
         core_1.Output()
     ], ToolbarComponent.prototype, "usePc");
+    __decorate([
+        core_1.Output()
+    ], ToolbarComponent.prototype, "format");
     ToolbarComponent = __decorate([
         core_1.Component({
             selector: 'toolbar',
