@@ -12,7 +12,7 @@ app.use(async function (ctx, next) {
   const start = new Date();
   await next();
   const ms = new Date() - start;
-  ctx.body = 'cc' + 'Hello World';
+  ctx.body = `Hello World<br/> ${ms}`;
   ctx.set('X-Response-Time', `${ms}ms`);
 });
 
