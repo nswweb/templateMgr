@@ -13,5 +13,5 @@ import  './template/editer.template.controller'
 app.use(koaRouter.routes())
    .use(koaRouter.allowedMethods());
 
-console.log('server started : http://localhost:3000/');
+console.log('server started : http://localhost:3000/api/');
 app.listen(3000);

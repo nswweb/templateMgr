@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 export interface TemplateModel {
     id: string,
@@ -15,11 +17,15 @@ export class TemplateDataService {
 
     }
 
+    private extractData(res: Response) {
+        let body = res.json();
+        return body.data || {};
+    }
     private handleError(error: Response | any) {
         // In a real world app, we might use a remote logging infrastructure
         let errMsg: string;
         if (error instanceof Response) {
-            const body: any = error.json() || '';
+            const body = error.json() || '';
             const err = body.error || JSON.stringify(body);
             errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
         } else {
@@ -32,18 +38,18 @@ export class TemplateDataService {
     getTemplates(): Observable<TemplateModel[]> {
         console.log('get templatews');
 
-        this.http.get('api/editTpls').toPromise()
-        .then((res)=>{
-            let body = res.json();
-            alert(body.data);
-        });
+        // this.http.get('api/template/loadUsers/aa').toPromise()
+        // .then((res)=>{
+        //     let body = res.json();
+        //     alert(body.data);
+        // });
 
-        return this.http.get('api/editTpls', {
-            method: 'get'
-        })
-            .map((res) => {
-                return res.json().data || {};
-            })
+        // return this.http.get('api/template/loadUsers/aa')
+        //     .map(this.extractData)
+        //     .catch(this.handleError);
+
+        return this.http.get('api/template/loadUsers/aa')
+            .map(this.extractData)
             .catch(this.handleError);
     }
 

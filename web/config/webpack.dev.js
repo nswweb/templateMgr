@@ -8,29 +8,26 @@ module.exports = webpackMerge(commonConfig, {
 
   output: {
     path: helpers.root('dist'),
-    //publicPath: 'http://localhost:8080/',
+    publicPath: 'http://127.0.0.1:8080/',
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'
   },
 
   plugins: [
-    new ExtractTextPlugin('[name].css'),
-    new webpack.HotModuleReplacementPlugin()
+    new ExtractTextPlugin('[name].css')
   ],
-
   devServer: {
-    contentBase: './src/',
-    historyApiFallback: true,
+    inline: true,
     hot: true,
-    noInfo: false,
-    port: 8080,
-    publicPath: 'http://localhost:8080/',
+    historyApiFallback: true,
     proxy: {
       '/api/*': {
-        target: 'http://localhost:3000/',
-        host: 'localhost',
-        secure: false
-      }
+        target: 'http://127.0.0.1:3000/',
+        secure: false       
+      },
+      ignorePath: true,
+      changeOrigin: true,
+      secure: false
     }
   }
 });
