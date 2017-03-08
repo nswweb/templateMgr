@@ -1,7 +1,7 @@
 <main>
   <section class="header">
     <toolbar
-      (select) = "selectTemplate()"
+      (select) = "loadModules()"
       (usePc) = "showPcPreview()"
       (usePhone) = "showPhonePreview()"
       (format) = "formatCode()"
@@ -9,7 +9,7 @@
   </section>
   <section class="main">
         <section class="preview-container" [ngClass]="previewStyle">
-          <preview class="preview-com" [template]="html"></preview>
+          <preview class="preview-com" [template]="model.html"></preview>
         </section>
         <section class="code-container">
           <edit [editValue]="html" (valueChanged)="valueChanged($event)"></edit>

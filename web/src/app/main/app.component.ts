@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TemplateDataService, TemplateModel } from '../services/template.data.service';
+import { Observable } from 'rxjs/Observable'
 
 const PC_VIEW_CLASS = 'pc-view';
 const PHONE_VIEW_CLASS = 'phone-view';
@@ -8,29 +10,47 @@ const PHONE_VIEW_CLASS = 'phone-view';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent { 
-    previewStyle:string = PC_VIEW_CLASS;
-    html:string = "<div>hello template</div>";
-    valueChanged(value:string){
-      this.html = value;
-    }
-    selectTemplate(){
-    
-    }
-    uploadTemplate(){
+export class AppComponent implements OnInit {
+  previewStyle: string = PC_VIEW_CLASS;  
+  models: Observable<TemplateModel[]>;
+  html:string = '<div>hello template</div>';
+  model = {
+    id: '',
+    html: '<div>hello template</div>'
+  };
 
-    }
-    saveModify(){
+  constructor(private service: TemplateDataService) { }
 
-    }
-    showPcPreview(){
-      this.previewStyle = PC_VIEW_CLASS;
-    }
+  ngOnInit(): void {
+    this.loadModules();
+  }
 
-    showPhonePreview(){
-      this.previewStyle = PHONE_VIEW_CLASS;
-    }
-    formatCode(){
-      
-    }
+  loadModules (){
+    this.models = this.service.getTemplates();
+  }
+
+  valueChanged(value: string) {
+    //this.model.code = value||'';
+    //this.html = value;
+    this.model.html = value;
+  }
+  selectTemplate() {
+
+  }
+  uploadTemplate() {
+
+  }
+  saveModify() {
+
+  }
+  showPcPreview() {
+    this.previewStyle = PC_VIEW_CLASS;
+  }
+
+  showPhonePreview() {
+    this.previewStyle = PHONE_VIEW_CLASS;
+  }
+  formatCode() {
+
+  }
 }
