@@ -52,9 +52,12 @@ var insertDocuments = function insertDocuments(document, conllectionName) {
  * @param collectionName
  * @param query
  */
-var findDocuments = function findDocuments(collectionName, query) {
+var findDocuments = async function findDocuments(collectionName, query) {
 	query = query || {};
 	
+	let db = await connect();
+	let connection = db.collection(collectionName);
+
 	return connect(function (db, callback) {
 		let conllection = db.collection(collectionName);
 		conllection.find(query).toArray(function (err, docs) {
