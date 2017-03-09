@@ -24,6 +24,17 @@
   display: none
 }
 
+.tpl-title{
+    position: absolute;
+    z-index: 9999;
+    right: 26px;
+    top: 49px;
+    color: gray;
+    background: bisque;
+    font-size: large;
+    opacity: 0.7;
+}
+
 .select-template.show-template{
   display: block;
   position: absolute;
