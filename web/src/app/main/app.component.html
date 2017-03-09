@@ -1,24 +1,22 @@
 <main>
   <section class="header">
-    <toolbar
-      (select) = "loadModules()"
-      (usePc) = "showPcPreview()"
-      (usePhone) = "showPhonePreview()"
-      (format) = "formatCode()"
-    ></toolbar>
+    <toolbar (select)="showSelectTemplate()" (usePc)="showPcPreview()" (usePhone)="showPhonePreview()" (format)="formatCode()" (first)="selectFirst()"
+      (previous)="selectPrevious()" (next)="selectNext()" (last)="selectLast()"></toolbar>
   </section>
   <section class="main">
-        <section class="preview-container" [ngClass]="previewStyle">
-          <preview class="preview-com" [template]="models[0].html"></preview>
-        </section>
-        <section class="code-container">
-          <edit [editValue]="html" (valueChanged)="valueChanged($event)"></edit>
-        </section>
+    <section class="preview-container" [ngClass]="previewStyle">
+      <div class="tpl-title">{{model.title}}</div>
+      <preview class="preview-com" [template]="model.htmlContent"></preview>
+    </section>
+    <section class="code-container">
+      <edit [editValue]="model.htmlContent" (valueChanged)="valueChanged($event)"></edit>
+    </section>
+    
   </section>
-  <div *ngFor="let mode of models">
-    {{mode.html}}
-  </div>
+  <section class="select-template" [ngClass]="displaySelectPanel && 'show-template'">
+      <select-template (select)="selectTemplate($event)"></select-template>
+    </section>
   <section class="footer">
-      牛前端作品
+    牛前端作品
   </section>
 </main>

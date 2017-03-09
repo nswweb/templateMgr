@@ -13,6 +13,11 @@ export class ToolbarComponent{
     @Output() usePc = new EventEmitter();
     @Output() format = new EventEmitter();
 
+    @Output() next = new EventEmitter();
+    @Output() previous = new EventEmitter();
+    @Output() first = new EventEmitter();
+    @Output() last = new EventEmitter();
+
     constructor(){
     }
 }

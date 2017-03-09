@@ -1,0 +1,8 @@
+<div>
+    <ul>
+        <li *ngFor="let item of models" (click)="select.emit(item)">
+            <!--<img style="height: 200px" [attr.src]="item.imgSm" />-->
+            <a href="javascript:void(0)">{{item.title}}</a>
+        </li>
+    </ul>
+</div>

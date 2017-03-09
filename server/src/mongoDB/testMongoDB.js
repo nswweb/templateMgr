@@ -54,9 +54,6 @@ var insertDocuments = function insertDocuments(document, conllectionName) {
  */
 var findDocuments = async function findDocuments(collectionName, query) {
 	query = query || {};
-	
-	let db = await connect();
-	let connection = db.collection(collectionName);
 
 	return connect(function (db, callback) {
 		let conllection = db.collection(collectionName);

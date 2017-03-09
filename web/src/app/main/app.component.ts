@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TemplateDataService, TemplateModel } from '../services/template.data.service';
 import { Observable } from 'rxjs/Observable'
 
+
 const PC_VIEW_CLASS = 'pc-view';
 const PHONE_VIEW_CLASS = 'phone-view';
 
@@ -11,13 +12,12 @@ const PHONE_VIEW_CLASS = 'phone-view';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  previewStyle: string = PC_VIEW_CLASS;  
-  models: Observable<TemplateModel[]>;
-  html:string = '<div>hello template</div>';
-  model = {
-    id: '',
-    html: '<div>hello template</div>'
-  };
+  previewStyle: string = PC_VIEW_CLASS;
+  index: number = 0;
+  displaySelectPanel: boolean = false;
+  html: string = '<div>hello template</div>';
+  model: TemplateModel = new TemplateModel();
+  models: TemplateModel[];
 
   constructor(private service: TemplateDataService) { }
 
@@ -25,18 +25,47 @@ export class AppComponent implements OnInit {
     this.loadModules();
   }
 
-  loadModules (){
-    this.models = this.service.getTemplates();
+  loadModules() {
+    this.service.getTemplates().subscribe((res: TemplateModel[]) => {
+      this.models = res;
+      this.model = this.models[this.index];
+      console.log(this.model);
+    });
   }
 
   valueChanged(value: string) {
     //this.model.code = value||'';
     //this.html = value;
-    this.model.html = value;
+    this.model.htmlContent = value;
   }
-  selectTemplate() {
+  showSelectTemplate() {
+    this.displaySelectPanel = !this.displaySelectPanel;
+  }
+  selectTemplate(model:TemplateModel) {
+    this.model = model;
+  }
 
+  selectFirst() {
+    this.index = 0;
+    this.model = this.models[this.index];
   }
+
+  selectPrevious() {
+    this.index = this.index > 0 ? this.index - 1 : 0;
+    this.model = this.models[this.index];
+  }
+
+  selectNext() {
+    this.index = this.index < this.models.length - 1 ? this.index + 1 : this.models.length - 1;
+    this.model = this.models[this.index];
+  }
+
+  selectLast() {
+    this.index = this.models.length - 1;
+    this.model = this.models[this.index];
+  }
+
+
   uploadTemplate() {
 
   }
@@ -51,6 +80,6 @@ export class AppComponent implements OnInit {
     this.previewStyle = PHONE_VIEW_CLASS;
   }
   formatCode() {
-
+    
   }
 }

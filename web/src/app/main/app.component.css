@@ -19,6 +19,24 @@
   text-align: center;
 }
 
+.select-template{
+  
+  display: none
+}
+
+.select-template.show-template{
+  display: block;
+  position: absolute;
+  left: 0;
+  top:43px;
+  padding: 20px;
+  z-index: 999;
+  background-color: peru;
+  z-index: 999;
+  font-size: large;
+  font-weight: 600;
+}
+
 .pc-view,.phone-view{
   text-align: center;
 }
@@ -31,6 +49,7 @@
   display: inline-block;
   width: 450px;
 }
+
 
 @media screen and (max-width: 800px) {
   .main{

@@ -4,9 +4,21 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-export interface TemplateModel {
-    id: string,
-    html: string
+export class TemplateModel {
+    _id: string;
+    htmlContent: string;
+    title: string;
+    constructor() {
+        this.htmlContent = '';
+    }
+
+    static toModel(item: any): TemplateModel {
+        var model = new TemplateModel();
+        model._id = item._id;
+        model.htmlContent = item.htmlContent;
+        model.title = item.title;
+        return model;
+    }
 }
 
 @Injectable()
@@ -19,7 +31,8 @@ export class TemplateDataService {
 
     private extractData(res: Response) {
         let body = res.json();
-        return body.data || {};
+        var result = body.map((item: any) => TemplateModel.toModel(item));
+        return result || {};
     }
     private handleError(error: Response | any) {
         // In a real world app, we might use a remote logging infrastructure
@@ -36,19 +49,7 @@ export class TemplateDataService {
     }
 
     getTemplates(): Observable<TemplateModel[]> {
-        console.log('get templatews');
-
-        // this.http.get('api/template/loadUsers/aa').toPromise()
-        // .then((res)=>{
-        //     let body = res.json();
-        //     alert(body.data);
-        // });
-
-        // return this.http.get('api/template/loadUsers/aa')
-        //     .map(this.extractData)
-        //     .catch(this.handleError);
-
-        return this.http.get('api/template/loadUsers/aa')
+        return this.http.get('api/editTemplate/editTpls')
             .map(this.extractData)
             .catch(this.handleError);
     }

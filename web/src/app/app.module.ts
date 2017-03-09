@@ -8,9 +8,11 @@ import {LAceEditorModule } from 'angular2-ace';
 
 import {EditComponent} from './edit/edit.component';
 import {previewComponent} from './preview/preview.component';
-
+import {selectComponent} from './select/select.component';
 import {ToolbarComponent} from './toolbar/toolbar.component';
-import {TemplateDataService} from './services/template.data.service';
+import {TemplateDataService, TemplateModel} from './services/template.data.service';
+
+
 
 import '../../public/css/styles.css';
 
@@ -26,9 +28,10 @@ import '../../public/css/styles.css';
     AppComponent,
     EditComponent,
     previewComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    selectComponent
   ],
-  providers:[TemplateDataService],
+  providers:[TemplateDataService, TemplateModel],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
