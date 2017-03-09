@@ -1,14 +1,17 @@
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+// import { NgModule } from '@angular/core';
+// import { FormsModule } from '@angular/forms'
 
-import '../pulgin'
+// import {AceComponent} from './ace-editor/ace.component';
 
-@NgModule({
-    imports: [
-        NgModule,
-        FormsModule
-    ],
-    declarations: [],
-    exports: []
-})
-export class coreModule { }
+// // import '../../../plugins/ace-noconflict/ace.js';
+// // import '../../../plugins/ace-noconflict/ext-language_tools.js';
+
+// @NgModule({
+//     imports: [
+//         NgModule,
+//         FormsModule
+//     ],
+//     declarations: [AceComponent],
+//     exports: [AceComponent]
+// })
+// export class CoreModule { }

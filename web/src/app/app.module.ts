@@ -4,7 +4,9 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { AppComponent } from './template/main/app.component';
 
 import {FormsModule} from '@angular/forms';
-import {LAceEditorModule } from 'angular2-ace';
+import {AceComponent} from './core/ace-editor/ace.component';
+// import {LAceEditorModule } from 'angular2-ace';
+// import {CoreModule} from './core/core.module';
 
 import {EditComponent} from './template/edit/edit.component';
 import {previewComponent} from './template/preview/preview.component';
@@ -21,15 +23,18 @@ import '../../public/css/styles.css';
   imports: [
     BrowserModule,
     FormsModule,
-    LAceEditorModule,
+    // LAceEditorModule,
     HttpModule
+    // ,
+    // CoreModule
   ],
   declarations: [
     AppComponent,
     EditComponent,
     previewComponent,
     ToolbarComponent,
-    selectComponent
+    selectComponent,
+    AceComponent
   ],
   providers:[TemplateDataService, TemplateModel],
   bootstrap: [ AppComponent ]

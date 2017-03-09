@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplateDataService, TemplateModel } from '../services/template.data.service';
 import { Observable } from 'rxjs/Observable'
+let beautify = require('js-beautify').html;
 
 
 const PC_VIEW_CLASS = 'pc-view';
@@ -41,7 +42,7 @@ export class AppComponent implements OnInit {
   showSelectTemplate() {
     this.displaySelectPanel = !this.displaySelectPanel;
   }
-  selectTemplate(model:TemplateModel) {
+  selectTemplate(model: TemplateModel) {
     this.model = model;
   }
 
@@ -80,6 +81,6 @@ export class AppComponent implements OnInit {
     this.previewStyle = PHONE_VIEW_CLASS;
   }
   formatCode() {
-    
+    this.model.htmlContent = beautify(this.model.htmlContent, { indent_size: 4,"indent_char": " ", });
   }
 }

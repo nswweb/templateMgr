@@ -1,12 +1,18 @@
-import { Component, Input, Output, EventEmitter, ElementRef, forwardRef, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, forwardRef, AfterViewInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 
 declare var ace: any;
 
 @Component({
     selector: 'bw-ace',
     template: '<div class="ace-editor"></div>',
-    styleUrls: ['./ace.component.css']
+    styleUrls: ['./ace.component.css'],
+    providers: [{
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => AceComponent),
+        multi: true
+    }]
 })
 export class AceComponent implements ControlValueAccessor, AfterViewInit {
     constructor(private element: ElementRef) { }
@@ -57,10 +63,15 @@ export class AceComponent implements ControlValueAccessor, AfterViewInit {
             console.error("No ace found.");
             return;
         }
+
         let editorElement = this.element.nativeElement.querySelector(".ace-editor");
         this.editor = ace.edit(editorElement);
-
-       // this.setEditor(this.options, true);
+        this.editor.setTheme("ace/theme/twilight");
+        this.editor.getSession().setMode("ace/mode/html");
+        this.editor.getSession().setTabSize(4);
+        setTimeout(() => {
+            this.editor.resize();
+        },500)
 
         this.editor.on("change", (e: any) => {
             let val = this.editor.getValue();
