@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import {HttpModule} from '@angular/http';
-import { BrowserModule }  from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './template/main/app.component';
 
-import {FormsModule} from '@angular/forms';
-import {AceComponent} from './core/ace-editor/ace.component';
+import { FormsModule } from '@angular/forms';
+import { AceComponent } from './core/ace-editor/ace.component';
 // import {LAceEditorModule } from 'angular2-ace';
-// import {CoreModule} from './core/core.module';
+import { CoreModule } from './core/core.module';
 
-import {EditComponent} from './template/edit/edit.component';
-import {previewComponent} from './template/preview/preview.component';
-import {selectComponent} from './template/select/select.component';
-import {ToolbarComponent} from './template/toolbar/toolbar.component';
-import {TemplateDataService, TemplateModel} from './template/services/template.data.service';
+import { EditComponent } from './template/edit/edit.component';
+import { previewComponent } from './template/preview/preview.component';
+import { selectComponent } from './template/select/select.component';
+import { ToolbarComponent } from './template/toolbar/toolbar.component';
+import { TemplateDataService, TemplateModel } from './template/services/template.data.service';
 
 
 
@@ -24,19 +24,17 @@ import '../../public/css/styles.css';
     BrowserModule,
     FormsModule,
     // LAceEditorModule,
-    HttpModule
-    // ,
-    // CoreModule
+    HttpModule,
+    CoreModule
   ],
   declarations: [
     AppComponent,
     EditComponent,
     previewComponent,
     ToolbarComponent,
-    selectComponent,
-    AceComponent
+    selectComponent
   ],
-  providers:[TemplateDataService, TemplateModel],
-  bootstrap: [ AppComponent ]
+  providers: [TemplateDataService, TemplateModel],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
