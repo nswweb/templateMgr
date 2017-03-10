@@ -3,13 +3,16 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [        
         {
             "type": "node",
             "request": "launch",
             "name": "启动程序",
-            "program": "${file}",
-            "cwd": "${workspaceRoot}"
+            "program": "${workspaceRoot}/server/app/koa-app.js",
+            "cwd": "${workspaceRoot}",
+            "stopOnEntry": false,
+            "args": [],
+            "sourceMaps": true
         },
         {
             "type": "node",

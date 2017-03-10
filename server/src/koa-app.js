@@ -9,6 +9,7 @@ const app = new Koa();
 import './demo/template.controller';
 import './demo/user.controller';
 import  './template/editer.template.controller'
+import './controllers/template';
 
 app.use(koaRouter.routes())
    .use(koaRouter.allowedMethods());

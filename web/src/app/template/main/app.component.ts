@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     this.service.getTemplates().subscribe((res: TemplateModel[]) => {
       this.models = res;
       this.model = this.models[this.index];
-      console.log(this.model);
+      this.formatCode();
     });
   }
 
@@ -44,26 +44,31 @@ export class AppComponent implements OnInit {
   }
   selectTemplate(model: TemplateModel) {
     this.model = model;
+    this.formatCode();
   }
 
   selectFirst() {
     this.index = 0;
     this.model = this.models[this.index];
+    this.formatCode();
   }
 
   selectPrevious() {
     this.index = this.index > 0 ? this.index - 1 : 0;
     this.model = this.models[this.index];
+    this.formatCode();
   }
 
   selectNext() {
     this.index = this.index < this.models.length - 1 ? this.index + 1 : this.models.length - 1;
     this.model = this.models[this.index];
+    this.formatCode();
   }
 
   selectLast() {
     this.index = this.models.length - 1;
     this.model = this.models[this.index];
+    this.formatCode();
   }
 
 
