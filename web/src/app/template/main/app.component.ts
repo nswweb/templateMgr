@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   html: string = '<div>hello template</div>';
   model: TemplateModel = new TemplateModel();
   models: TemplateModel[];
+  menuTitle:String = '模板';
 
   constructor(private service: TemplateDataService) { }
 

@@ -1,5 +1,4 @@
 import { Component, ElementRef, forwardRef, AfterViewInit, Input, Output, EventEmitter} from '@angular/core';
-import '../../../../../semantic-ui/components/popup.js'
 
 class MenuItem {
     name: String;
