@@ -9,9 +9,11 @@ import '@angular/router';
 import 'rxjs';
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...
-//import 'jquery/dist/jquery.js';
-import 'bootstrap/dist/css/bootstrap.css';
-//import 'bootstrap/dist/js/bootstrap.js';
+import '../node_modules/jquery/dist/jquery.js';
+declare var $:any;
+declare var jQuery:any;
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../node_modules/bootstrap/dist/js/bootstrap.js';
 import './plugins/ace-noconflict/ace.js';
 import './plugins/ace-noconflict/ext-language_tools.js';
 import './plugins/ace-noconflict/mode-html.js';
